@@ -1,81 +1,157 @@
+# Hotel Management System (Java + MySQL)
+
+A console-based Hotel Management System built using **Java**, **JDBC**, and **MySQL**. Designed for front desk operators to manage hotel room reservations.
 
 ---
 
-## Table of Contents
-- [Student Placement Management System](#student-placement-management-system)
-- [Project Overview](#project-overview)
-- [Technologies Used](#technologies-used)
-- [File Structure](#file-structure)
-  - [Log_in](#log_in)
-  - [Integration](#integration)
-  - [Student](#student)
-  - [Coordinator](#coordinator)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
+##  Table of Contents
+
+- [Features](#-features)
+- [Technologies Used](#-technologies-used)
+- [Prerequisites](#-prerequisites)
+- [Setup Instructions](#️-setup-instructions)
+  - [1. Clone the Repository](#1-clone-the-repository)
+  - [2. Create the Database and Table in MySQL](#2-create-the-database-and-table-in-mysql)
+  - [3. Open Project in IntelliJ IDEA](#3-open-project-in-intellij-idea)
+  - [4. Add MySQL JDBC Connector](#4-add-mysql-jdbc-connector)
+  - [5. Update MySQL Credentials](#5-update-mysql-credentials-in-mainjava)
+- [How to Run](#️-how-to-run)
+- [Version Control](#-version-control)
+- [What I Learned](#-what-i-learned)
+- [Future Improvements](#-future-improvements)
+- [GitHub Repository](#-github-repository)
+- [Author](#-author)
 
 ---
-# Student Placement Management System
 
-The Student Placement Management System is designed to streamline student placement processes efficiently. It provides a comprehensive platform for tracking and organizing student placements.
-## Project Overview
+## Features
 
-This system automates tasks such as student registration, placement tracking, and reporting, helping educational institutions manage placements effectively. It is built using PHP for the backend, HTML, CSS, and JavaScript for the frontend, and MySQL for the database.
-
-## Technologies Used
-
-- *Backend:* PHP
-- *Frontend:* HTML, CSS, JavaScript
-- *Database:* MySQL
-- *Other Tools:* XAMPP## File Structure
-
-Below is a brief description of each file and its purpose:
-
-### Log_in
-- **`login_form.php`:** Main login page code.
-- **`login.css`:** Styles for the login page.
-- **`login.js`:** Functionality for the login page.
-
-### Integration
-- **`config.php`:** Connects to the local database.
-- **`database.php`:** Holds user registration data.
-
-### Student
-- **`home.html`:** Student dashboard home page.
-- **`listing.php`:** Displays jobs listed by coordinators.
-- **`jobapp.html`:** Allows students to apply for jobs.
-- **`submit_application.php`:** Submits job applications.
-- **`submit_cv.php`:** Uploads CVs with applications.
-- **`internship-listing.html`:** Lists internships (under development).
-- **`profile.html`:** Displays student profiles (not integrated).
-- **`tracking.html`:** Tracks submitted applications (not implemented).
-- **`discussion.html`:** Discussion area for students.
-- **`about.html`:** Website information.
-- **`faq.html`:** Frequently Asked Questions.
-
-### Coordinator
-- **`coordinator.php`:** Coordinator dashboard.
-- **`job-opening.php`:** Adds job openings.
-- **`schedual-interview.php`:** Schedules interviews.
-- **`view_application.php`:** Displays uploaded CVs.
-## Installation
-
-1. Install XAMPP from [Apache Friends](https://www.apachefriends.org/).
-2. Start Apache and MySQL services.
-3. Access localhost in your browser.
-4. Create a database using phpMyAdmin. [Tutorial](https://youtu.be/co-xyHRdHRg?si=153f68Ak-3igAwcS).
-## Usage
-
-1. Access the system at localhost.
-2. Register as a student or coordinator.
-3. Follow on-screen instructions to manage placements.
-## Contributing
-
-Contributions are welcome! Please submit a pull request with your changes and include a brief description.
+- Reserve a room
+- View all reservations
+- Get room number by guest name and reservation ID
+- Update reservation details
+- Delete reservations
 
 ---
-## Acknowledgement
 
-Team Members **[Sana K S,Om Desai,Rishikesh Raj, Swapnil Sharma].**
+##  Technologies Used
 
-This layout provides a clear structure for your README file, helping users understand your project's purpose, components, and how to use it. You can customize it further based on your specific needs and project details.
+- Java (JDK 17 or later)
+- JDBC (Java Database Connectivity)
+- MySQL (Database)
+- IntelliJ IDEA (IDE)
+- Git & GitHub (Version control)
+
+---
+
+##  Prerequisites
+
+Make sure the following are installed:
+
+- [Java JDK](https://www.oracle.com/java/technologies/javase-downloads.html)
+- [IntelliJ IDEA](https://www.jetbrains.com/idea/)
+- [MySQL Server & Workbench](https://dev.mysql.com/downloads/installer/)
+- [MySQL Connector/J (JDBC Driver)](https://dev.mysql.com/downloads/connector/j/)
+- Git
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/hotel-management-system.git
+cd hotel-management-system
+````
+
+### 2. Create the Database and Table in MySQL
+
+Open MySQL Workbench and run:
+
+```sql
+CREATE DATABASE hotel_db;
+
+USE hotel_db;
+
+CREATE TABLE reservations (
+    reservation_id INT AUTO_INCREMENT PRIMARY KEY,
+    guest_name VARCHAR(100) NOT NULL,
+    room_number INT NOT NULL,
+    contact_number VARCHAR(20),
+    reservation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+### 3. Open Project in IntelliJ IDEA
+
+* Open IntelliJ
+* Click **Open** and select the project folder
+* Configure JDK if prompted
+
+### 4. Add MySQL JDBC Connector
+
+* Download `mysql-connector-java-x.x.xx.jar`
+* In IntelliJ:
+  Go to `File` → `Project Structure` → `Libraries` → `+` → Add the JAR file
+* Click Apply and OK
+
+### 5. Update MySQL Credentials in `Main.java`
+
+```java
+private static final String url = "jdbc:mysql://localhost:3306/hotel_db";
+private static final String username = "your_mysql_username";
+private static final String password = "your_mysql_password";
+```
+
+---
+
+##  How to Run
+
+* Right-click `Main.java` and click **Run**
+* Follow the menu prompts to interact with the system via the console
+
+---
+
+## Version Control
+
+While working on this project, I learned how to use Git and GitHub:
+
+* Track changes using `git add`, `commit`, `push`
+* Create and manage commits throughout development
+* Maintain a clean, documented code history
+* Host the project and documentation on GitHub
+
+---
+
+## What I Learned
+
+* Java + MySQL integration using JDBC
+* Writing SQL queries for real-world data handling
+* Exception handling and modular code design in Java
+* Using Git & GitHub for version control and collaboration
+* Writing clear README documentation for open source projects
+
+---
+
+##  Future Improvements
+
+* Add a GUI using JavaFX or Swing
+* Add login/authentication system
+* Include check-in/check-out and billing features
+* Export reservation data to PDF
+
+---
+
+## 🔗 GitHub Repository
+
+[👉 View the project on GitHub](https://github.com/swapnilsharma102004/JDBC-hotel-management-system)
+
+---
+
+##  Author
+
+**Swapnil**
+[GitHub Profile](https://github.com/swapnilsharma102004)
+
+
